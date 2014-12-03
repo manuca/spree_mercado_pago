@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.description = 'Integrates Mercado Pago with Spree'
   s.author      = "Manuel Barros Reyes"
   s.files       = `git ls-files -- {app,config,lib,test,spec,features}/*`.split("\n")
-  s.homepage    = 'https://github.com/manuca/Spree-Mercado-Pago-payment-method'
+  s.homepage    = 'https://github.com/manuca/spree_mercado_pago'
   s.email       = 'manuca@gmail.com'
   s.license     = 'MIT'
 
