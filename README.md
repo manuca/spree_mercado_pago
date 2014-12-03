@@ -10,7 +10,7 @@ Installation
 ------------
 
 ```
-gem 'spree_mercado_pago_payment_method', git: "git@github.com:manuca/Spree-Mercado-Pago-payment-method.git"
+gem 'spree_mercado_pago', git: "git@github.com:manuca/spree_mercado_pago.git"
 ```
 
 inside your project import and migrate engine migrations:
