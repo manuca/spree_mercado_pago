@@ -16,7 +16,7 @@ gem 'spree_mercado_pago', git: "git@github.com:manuca/spree_mercado_pago.git"
 inside your project import and migrate engine migrations:
 
 ```
-rake spree_mercado_pago_payment_method_engine:install:migrations
+rake spree_mercado_pago_engine:install:migrations
 rake db:migrate
 ```
 

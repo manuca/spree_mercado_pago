@@ -1,6 +1,6 @@
 require 'spree_core'
 
-module SpreeMercadoPagoPaymentMethod
+module SpreeMercadoPago
   class Engine < Rails::Engine
 
     def self.activate
