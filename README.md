@@ -35,7 +35,6 @@ For IPN you need to configure the notification URL in Mercado Pago's site. The n
 Pending Work
 ------------
 
-- Portuguese translation (volunteers please take a look at localization files, there are very few strings to translate and I'll be glad to add a pt.yml to this repo).
 - Configurable currency
 
 Testing
