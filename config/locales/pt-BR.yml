@@ -1,0 +1,4 @@
+pt-BR:
+  mercado_pago:
+    make_payment: "Pagar com Mercado Pago"
+    authentication_error: "Não foi possível autenticar com Mercado Pago"
