@@ -16,7 +16,7 @@ gem 'spree_mercado_pago', git: "git@github.com:manuca/spree_mercado_pago.git"
 inside your project run
 
 ```
-be rails g spree_mercado_pago:install
+bundle exec rails g spree_mercado_pago:install
 ```
 
 to import assets and migrations.
