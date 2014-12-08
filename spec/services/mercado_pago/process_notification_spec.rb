@@ -16,9 +16,11 @@ module MercadoPago
       }
     end
 
+    # The first payment method of this kind will be picked by the process task
     before do
       fake_client = double("fake_client")
-      Spree::PaymentMethod::MercadoPago.stub(provider: fake_client)
+      fake_payment_method = double("fake_payment_method", provider: fake_client)
+      Spree::PaymentMethod::MercadoPago.stub(first: fake_payment_method)
       fake_client.should_receive(:get_operation_info).with(operation_id).
         and_return(operation_info)
       payment.pend!
