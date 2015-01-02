@@ -23,7 +23,6 @@ module Spree
     # Success/pending callbacks are currently aliases, this may change
     # if required.
     def success
-      payment.pend!
       payment.order.next
       flash.notice = Spree.t(:order_processed_successfully)
       flash['order_completed'] = true
