@@ -10,7 +10,7 @@ module MercadoPago
     let(:operation_info) do
       {
         "collection" => {
-          "external_reference" => order.payments.first.identifier,
+          "external_reference" => order.payments.first.number,
           "status" => "approved"
         }
       }

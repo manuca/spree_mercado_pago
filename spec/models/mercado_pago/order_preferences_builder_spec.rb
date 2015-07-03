@@ -22,7 +22,7 @@ describe "OrderPreferencesBuilder" do
     subject { MercadoPago::OrderPreferencesBuilder.new(order, payment, callback_urls, payer_data).preferences_hash }
 
     it "should return external reference" do
-      expect(subject).to include(external_reference:payment.identifier)
+      expect(subject).to include(external_reference:payment.number)
     end
 
     it "should set callback urls" do

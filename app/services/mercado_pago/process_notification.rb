@@ -38,7 +38,7 @@ module MercadoPago
       client = ::Spree::PaymentMethod::MercadoPago.first.provider
       op_info = client.get_operation_info(notification.operation_id)["collection"]
 
-      if payment = Spree::Payment.where(identifier: op_info["external_reference"]).first
+      if payment = Spree::Payment.where(number: op_info["external_reference"]).first
         if STATES[:complete].include?(op_info["status"])
           payment.complete
         elsif STATES[:failure].include?(op_info["status"])

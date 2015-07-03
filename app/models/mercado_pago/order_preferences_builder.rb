@@ -13,7 +13,7 @@ module MercadoPago
 
     def preferences_hash
       {
-        external_reference: @payment.identifier,
+        external_reference: @payment.number,
         back_urls: @callback_urls,
         payer: @payer_data,
         items: generate_items
