@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sass-rails', '~> 4.0'
   s.add_development_dependency 'coffee-rails', '~> 4.1'
   s.add_development_dependency 'sqlite3', '~> 1.3'
+  s.add_development_dependency 'binding_of_caller'
+  s.add_development_dependency 'better_errors'
 
   s.test_files = Dir["spec/**/*"]
 end
