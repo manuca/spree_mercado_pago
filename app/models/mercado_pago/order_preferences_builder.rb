@@ -37,8 +37,7 @@ module MercadoPago
         {
           :title => shipment.shipping_method.name,
           :unit_price => shipment.cost.to_f,
-          :quantity => 1,
-          :currency_id => 'ARS'
+          :quantity => 1
         }
       end
     end
