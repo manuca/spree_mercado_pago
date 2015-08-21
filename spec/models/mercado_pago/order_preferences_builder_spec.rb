@@ -40,8 +40,7 @@ describe "OrderPreferencesBuilder" do
         expect(subject[:items]).to include({
           title: line_item_description_text(line_item.variant.product.name),
           unit_price: line_item.price.to_f,
-          quantity: line_item.quantity.to_f,
-          currency_id: "ARS"
+          quantity: line_item.quantity.to_f
         })
       end
     end
@@ -53,8 +52,7 @@ describe "OrderPreferencesBuilder" do
         expect(subject[:items]).to include({
           title: line_item_description_text(adjustment.label),
           unit_price: adjustment.amount.to_f,
-          quantity: 1,
-          currency_id: "ARS"
+          quantity: 1
         })
       end
 
