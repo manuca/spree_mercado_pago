@@ -36,9 +36,10 @@ module MercadoPago
     def process!
       # Fix: Payment method is an instance of Spree::PaymentMethod::MercadoPago not THE class
       client = ::Spree::PaymentMethod::MercadoPago.first.provider
-      op_info = client.get_operation_info(notification.operation_id)["collection"]
+      raw_op_info = client.get_operation_info(notification.operation_id)
+      op_info = raw_op_info["collection"] unless raw_op_info.blank?
 
-      if payment = Spree::Payment.where(number: op_info["external_reference"]).first
+      if op_info && payment = Spree::Payment.where(number: op_info["external_reference"]).first
         if STATES[:complete].include?(op_info["status"])
           payment.complete
         elsif STATES[:failure].include?(op_info["status"])
