@@ -36,7 +36,7 @@ module MercadoPago
       @order.shipments.collect do |shipment|
         {
           :title => shipment.shipping_method.name,
-          :unit_price => shipment.cost.to_f,
+          :unit_price => shipment.cost.to_f + shipment.adjustment_total.to_f,
           :quantity => 1
         }
       end
