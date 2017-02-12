@@ -7,3 +7,4 @@ spec/dummy
 *.swp
 .rvmrc
 *.gem
+.idea

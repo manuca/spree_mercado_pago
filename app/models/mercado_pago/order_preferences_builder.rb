@@ -13,7 +13,7 @@ module MercadoPago
 
     def preferences_hash
       {
-        external_reference: @payment.identifier,
+        external_reference: @payment.number,
         back_urls: @callback_urls,
         payer: @payer_data,
         items: generate_items
@@ -36,9 +36,8 @@ module MercadoPago
       @order.shipments.collect do |shipment|
         {
           :title => shipment.shipping_method.name,
-          :unit_price => shipment.cost.to_f,
-          :quantity => 1,
-          :currency_id => 'ARS'
+          :unit_price => shipment.cost.to_f + shipment.adjustment_total.to_f,
+          :quantity => 1
         }
       end
     end
@@ -48,8 +47,7 @@ module MercadoPago
         {
           :title => line_item_description_text(line_item.variant.product.name),
           :unit_price => line_item.price.to_f,
-          :quantity => line_item.quantity,
-          :currency_id => 'ARS'
+          :quantity => line_item.quantity
         }
       end
     end
@@ -59,8 +57,7 @@ module MercadoPago
         {
           title: line_item_description_text(adjustment.label),
           unit_price: adjustment.amount.to_f,
-          quantity: 1,
-          currency_id: "ARS"
+          quantity: 1
         }
       end
     end

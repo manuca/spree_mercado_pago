@@ -1,16 +1,13 @@
 Spree Mercado Pago Payment Method
 =================================
 
-Integration of Mercado Pago with Spree 2.3 and 2.4
-
-For Spree 1.3 - Take a look a spree-1.3 branch  
-For Spree 1.2 - Take a look a spree-1.2 branch
+This project is a fork of: https://github.com/manuca/spree_mercado_pago
 
 Installation
 ------------
 
 ```
-gem 'spree_mercado_pago', git: "git@github.com:manuca/spree_mercado_pago.git"
+gem 'spree_mercado_pago', git: "git@github.com:woopasoft/spree_mercado_pago.git"
 ```
 
 inside your project run

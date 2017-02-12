@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = 'manuca@gmail.com'
   s.license     = 'MIT'
 
-  s.add_dependency 'spree_core',  '~> 2.3'
+  s.add_dependency 'spree_core',  '~> 3.0.8'
   s.add_dependency 'rest-client', '~> 1.7'
 
   s.add_development_dependency 'ffaker', '~> 1.25'
@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sass-rails', '~> 4.0'
   s.add_development_dependency 'coffee-rails', '~> 4.1'
   s.add_development_dependency 'sqlite3', '~> 1.3'
+  s.add_development_dependency 'binding_of_caller'
+  s.add_development_dependency 'better_errors'
 
   s.test_files = Dir["spec/**/*"]
 end

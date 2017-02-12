@@ -53,7 +53,7 @@ module Spree
     private
 
     def payment
-      @payment ||= Spree::Payment.where(identifier: params[:external_reference]).
+      @payment ||= Spree::Payment.where(number: params[:external_reference]).
         first
     end
 
