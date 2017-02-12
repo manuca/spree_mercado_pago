@@ -9,22 +9,22 @@ module Spree
         let(:use_case) { double("use_case") }
 
         it "handles notification and returns success" do
-          MercadoPago::HandleReceivedNotification.should_receive(:new).and_return(use_case)
-          use_case.should_receive(:process!)
+          allow(MercadoPago::HandleReceivedNotification).to receive(:new).and_return(use_case)
+          expect(use_case).to receive(:process!)
 
           spree_post :ipn, { id: operation_id, topic: "payment" }
-          response.should be_success
+          expect(response).to be_success
 
           notification = ::MercadoPago::Notification.order(:created_at).last
-          notification.topic.should eq("payment")
-          notification.operation_id.should eq(operation_id)
+          expect(notification.topic).to eq("payment")
+          expect(notification.operation_id).to eq(operation_id)
         end
       end
 
       describe "for invalid notification" do
         it "responds with invalid request" do
           spree_post :ipn, { id: operation_id, topic: "nonexistent_topic" }
-          response.should be_bad_request
+          expect(response).to be_bad_request
         end
       end
     end
