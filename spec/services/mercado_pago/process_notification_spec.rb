@@ -22,39 +22,39 @@ module MercadoPago
       before do
         fake_client = double("fake_client")
         fake_payment_method = double("fake_payment_method", provider: fake_client)
-        Spree::PaymentMethod::MercadoPago.stub(first: fake_payment_method)
-        fake_client.should_receive(:get_operation_info).with(operation_id).
+        allow(Spree::PaymentMethod::MercadoPago).to receive(:first).and_return(fake_payment_method)
+        allow(fake_client).to receive(:get_operation_info).with(operation_id).
           and_return(operation_info)
         payment.pend!
-        payment.state.should eq("pending")
+        expect(payment.state).to eq("pending")
       end
 
       describe "#process!" do
         it "completes payment for approved payment" do
           ProcessNotification.new(notification).process!
           payment.reload
-          payment.state.should eq("completed")
+          expect(payment.state).to eq("completed")
         end
 
         it "fails payment for rejected payment" do
           operation_info["collection"]["status"] = "rejected"
           ProcessNotification.new(notification).process!
           payment.reload
-          payment.state.should eq("failed")
+          expect(payment.state).to eq("failed")
         end
 
         it "voids payment for rejected payment" do
           operation_info["collection"]["status"] = "cancelled"
           ProcessNotification.new(notification).process!
           payment.reload
-          payment.state.should eq("void")
+          expect(payment.state).to eq("void")
         end
 
         it "pends payment for pending payment" do
           operation_info["collection"]["status"] = "pending"
           ProcessNotification.new(notification).process!
           payment.reload
-          payment.state.should eq("pending")
+          expect(payment.state).to eq("pending")
         end
       end
     end
@@ -64,11 +64,11 @@ module MercadoPago
       before do
         fake_client = double("fake_client")
         fake_payment_method = double("fake_payment_method", provider: fake_client)
-        Spree::PaymentMethod::MercadoPago.stub(first: fake_payment_method)
-        fake_client.should_receive(:get_operation_info).with(operation_id).
+        allow(Spree::PaymentMethod::MercadoPago).to receive(:first).and_return(fake_payment_method)
+        allow(fake_client).to receive(:get_operation_info).with(operation_id).
           and_return(nil)
         payment.pend!
-        payment.state.should eq("pending")
+        expect(payment.state).to eq("pending")
       end
 
       describe "#process!" do

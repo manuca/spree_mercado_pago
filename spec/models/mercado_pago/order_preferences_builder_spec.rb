@@ -6,7 +6,6 @@ describe "OrderPreferencesBuilder" do
     order = create(:order)
     create_list(:line_item, 2, order: order)
     order.line_items.reload
-    order.update!
     order
   end
 
@@ -19,7 +18,7 @@ describe "OrderPreferencesBuilder" do
   include Spree::ProductsHelper
 
   context "Calling preferences_hash" do
-    subject { MercadoPago::OrderPreferencesBuilder.new(order, payment, callback_urls, payer_data).preferences_hash }
+    let(:subject) { MercadoPago::OrderPreferencesBuilder.new(order, payment, callback_urls, payer_data).preferences_hash }
 
     it "should return external reference" do
       expect(subject).to include(external_reference:payment.number)

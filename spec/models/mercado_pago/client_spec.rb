@@ -33,14 +33,14 @@ describe MercadoPago::Client do
     context 'On success' do
       let(:http_response) {
         response = double('response')
-        response.stub(:code) { 200 }
-        response.stub(:to_str) { login_json_response }
+        allow(response).to receive(:code).and_return 200
+        allow(response).to receive(:to_str).and_return login_json_response
         response
       }
       let(:js_response) { JSON.parse(http_response) }
 
       before(:each) do
-        expect(RestClient).to receive(:post).and_return( http_response )
+        allow(RestClient).to receive(:post).and_return( http_response )
       end
 
       it 'returns a response object' do
@@ -49,30 +49,30 @@ describe MercadoPago::Client do
 
       it '#errors returns empty array' do
         client.authenticate
-        client.errors.should be_empty
+        expect(client.errors).to be_empty
       end
 
       it 'sets the access token' do
         client.authenticate
-        client.auth_response['access_token'].should eq('TU_ACCESS_TOKEN')
+        expect(client.auth_response['access_token']).to eq('TU_ACCESS_TOKEN')
       end
     end
 
     context 'On failure' do
       let(:bad_request_response) do
         response = double('response')
-        response.stub(:code) { 400 }
-        response.stub(:to_str) { '' }
+        allow(response).to receive(:code).and_return 400
+        allow(response).to receive(:to_str).and_return ""
         response
       end
 
       before(:each) do  
-        RestClient.should_receive(:post) { raise RestClient::Exception.new "foo" }
+        allow(RestClient).to receive(:post).and_raise(RestClient::Exception.new "foo")
       end
 
       it 'raise exception on invalid authentication' do
         expect { client.authenticate }.to raise_error(RuntimeError) do |error|
-          client.errors.should include(I18n.t(:authentication_error, scope: :mercado_pago))
+          expect(client.errors).to include(I18n.t(:authentication_error, scope: :mercado_pago))
         end
       end
     end
@@ -94,28 +94,28 @@ describe MercadoPago::Client do
 
       before(:each) do
         response = double('response')
-        response.stub(:code).and_return(200, 201)
-        response.stub(:to_str).and_return(login_json_response, preferences_json_response)
-        RestClient.should_receive(:post).exactly(2).times { response }
+        allow(response).to receive(:code).and_return(200, 201)
+        allow(response).to receive(:to_str).and_return(login_json_response, preferences_json_response)
+        allow(RestClient).to receive(:post).exactly(2).times { response }
 
         client.authenticate
       end
 
       it 'return value should not be nil' do
         response = client.create_preferences(preferences)
-        response.should_not be_nil
+        expect(response).to be_truthy
       end
 
       it '#redirect_url returns offsite checkout url' do
         client.create_preferences(preferences)
-        client.redirect_url.should be_present
-        client.redirect_url.should eq('https://www.mercadopago.com/checkout/pay?pref_id=identificador_de_la_preferencia')
+        expect(client.redirect_url).to be_present
+        expect(client.redirect_url).to eq('https://www.mercadopago.com/checkout/pay?pref_id=identificador_de_la_preferencia')
       end
     end
 
     context 'on failure' do
       before(:each) do
-        RestClient.should_receive(:post).exactly(2).times do
+        expect(RestClient).to receive(:post).exactly(2).times do
           if not @is_second_time
             @is_second_time = true
             "{}"
@@ -130,7 +130,7 @@ describe MercadoPago::Client do
 
       it 'throws exception and populate errors' do
         expect {client.create_preferences(preferences)}.to raise_error(RuntimeError) do |variable|
-          client.errors.should include(I18n.t(:authentication_error, scope: :mercado_pago))
+          expect(client.errors).to include(I18n.t(:authentication_error, scope: :mercado_pago))
         end
       end
     end
