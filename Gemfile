@@ -8,16 +8,6 @@ gem 'sass-rails'
 gem 'sqlite3', platforms: [:ruby, :mingw, :mswin, :x64_mingw]
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
-platforms :jruby do
-  gem 'jruby-openssl'
-  gem 'activerecord-jdbcsqlite3-adapter'
-end
-
-platforms :ruby do
-  gem 'mysql2'
-  gem 'pg'
-end
-
 group :test do
   gem 'capybara', '~> 2.4'
   gem 'capybara-screenshot', '~> 1.0'
@@ -46,6 +36,6 @@ group :test, :development do
   gem 'pry-byebug'
 end
 
-gem 'spree', '~> 3.2.0.rc1'
+gem 'spree', '~> 3.2.0.rc2'
 
 gemspec
