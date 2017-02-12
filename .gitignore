@@ -8,3 +8,4 @@ spec/dummy
 .rvmrc
 *.gem
 .idea
+VersionFile
