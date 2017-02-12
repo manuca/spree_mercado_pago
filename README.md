@@ -1,13 +1,14 @@
 Spree Mercado Pago Payment Method
 =================================
 
-This project is a fork of: https://github.com/manuca/spree_mercado_pago
+This project is a fork of: https://github.com/manuca/spree_mercado_pago and 
+it's compatible with spree 3.2.0 and Rails 5
 
 Installation
 ------------
 
 ```
-gem 'spree_mercado_pago', git: "git@github.com:woopasoft/spree_mercado_pago.git"
+gem 'spree_mercado_pago', '~> 3.2.0.rc2', git: "git@github.com:lucasruroken/spree_mercado_pago.git"
 ```
 
 inside your project run
