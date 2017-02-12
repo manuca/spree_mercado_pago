@@ -9,13 +9,13 @@ Gem::Specification.new do |s|
   s.email       = 'manuca@gmail.com'
   s.license     = 'MIT'
 
-  s.add_dependency 'spree_core',  '~> 3.0.8'
+  s.add_dependency 'spree_core',  '~> 3.2.0.rc1'
   s.add_dependency 'rest-client', '~> 1.7'
 
-  s.add_development_dependency 'ffaker', '~> 1.25'
+  s.add_development_dependency 'ffaker', '~> 2.2'
   s.add_development_dependency 'factory_girl', '~> 4.4'
-  s.add_development_dependency 'rspec-rails',  '~> 2.14'
-  s.add_development_dependency 'sass-rails', '~> 4.0'
+  s.add_development_dependency 'rspec-rails',  '~> 3.5'
+  s.add_development_dependency 'sass-rails', '~> 5.0'
   s.add_development_dependency 'coffee-rails', '~> 4.1'
   s.add_development_dependency 'sqlite3', '~> 1.3'
   s.add_development_dependency 'binding_of_caller'
