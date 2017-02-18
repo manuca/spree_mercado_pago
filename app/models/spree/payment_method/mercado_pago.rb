@@ -1,8 +1,5 @@
 module Spree
   class PaymentMethod::MercadoPago < PaymentMethod
-    preference :client_id,     :integer
-    preference :client_secret, :string
-    preference :sandbox, :boolean, default: true
 
     def payment_profiles_supported?
       false
