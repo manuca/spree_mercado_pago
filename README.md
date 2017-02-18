@@ -1,16 +1,13 @@
 Spree Mercado Pago Payment Method
 =================================
 
-## (Currently Unmaintained)
+This project is compatible with spree 3.2.0 and Rails 5
 
-Integration of Mercado Pago with Spree 2.3 and 2.4
+```
+gem 'spree_mercado_pago', '~> 3.2.0.rc2', git: "git@github.com:lucasruroken/spree_mercado_pago.git"
+```
 
-For Spree 1.3 - Take a look a spree-1.3 branch  
-For Spree 1.2 - Take a look a spree-1.2 branch
-
-Installation
-------------
-
+If you want to use this gem with spree 2.3 or 2.4, you should use the original repo:
 ```
 gem 'spree_mercado_pago', git: "git@github.com:manuca/spree_mercado_pago.git"
 ```

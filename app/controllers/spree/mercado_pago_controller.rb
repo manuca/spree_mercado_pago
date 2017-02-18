@@ -1,7 +1,7 @@
 module Spree
   class MercadoPagoController < StoreController
     protect_from_forgery except: :ipn
-    skip_before_filter :set_current_order, only: :ipn
+    skip_before_action :set_current_order, only: :ipn
 
     def checkout
       current_order.state_name == :payment || raise(ActiveRecord::RecordNotFound)
@@ -53,7 +53,7 @@ module Spree
     private
 
     def payment
-      @payment ||= Spree::Payment.where(identifier: params[:external_reference]).
+      @payment ||= Spree::Payment.where(number: params[:external_reference]).
         first
     end
 
