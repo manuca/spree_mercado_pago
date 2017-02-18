@@ -26,6 +26,10 @@ module Spree
       false
     end
 
+    def preferred_sandbox
+      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], "sandbox")
+    end
+
     ## Admin options
 
     def can_void?(payment)
