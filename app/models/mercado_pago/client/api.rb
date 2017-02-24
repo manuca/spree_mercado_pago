@@ -30,7 +30,7 @@ class MercadoPago::Client
     end
 
     def sandbox
-      @api_options[:sandbox]
+      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], "sandbox")
     end
 
     def get(url, request_options={}, options={})
