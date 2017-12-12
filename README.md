@@ -32,6 +32,8 @@ Testing
 -------
 
 - Clone this repo
-- Execute `bundle`
-- Execute `rake test_app` to build a dummy app directory inside specs
-- Execute `bundle exec rspec spec`
+- `ln -s docker-compose-{platform}.yml docker-compose.yml`
+- `docker-sync start` **Only in mac**
+- `docker-compose up`
+- `docker-compose run web bundle exec rake test_app` to build a dummy app directory inside specs
+- `docker-compose run web bundle exec rspec spec`

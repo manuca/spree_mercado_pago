@@ -9,3 +9,15 @@ spec/dummy
 *.gem
 .idea
 VersionFile
+
+*.rbc
+capybara-*.html
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+/coverage/
+/spec/tmp
+docker-compose.yml
+/.docker-sync
+/.bundle
+/vendor/bundle
