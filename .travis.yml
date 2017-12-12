@@ -4,4 +4,4 @@ rvm:
 
 script:
   - bundle exec rake test_app
-  - bundle exec rake rspec spec
+  - bundle exec rake spec
