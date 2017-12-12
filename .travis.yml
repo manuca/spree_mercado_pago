@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+ - 2.3
+ - jruby
+ - rbx-3
+install:
+  - bundle install
+  - bundle exec rake test_app
+script: bundle exec rspec spec
