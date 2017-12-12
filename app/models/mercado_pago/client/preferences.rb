@@ -7,14 +7,14 @@ class MercadoPago::Client
       @preferences_response = JSON.parse(response)
     rescue RestClient::Exception => e
       @errors << I18n.t(:authentication_error, scope: :mercado_pago)
-      raise RuntimeError.new(e.message)
+      raise e.message
     end
 
     private
 
     def send_preferences_request(preferences)
       RestClient.post(preferences_url(access_token), preferences.to_json,
-                      :content_type => 'application/json', :accept => 'application/json')
+                      content_type: 'application/json', accept: 'application/json')
     end
   end
 end

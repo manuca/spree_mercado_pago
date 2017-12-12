@@ -22,10 +22,10 @@ module MercadoPago
     # in_mediation => pend
     # charged_back => void
     STATES = {
-      complete: %w(approved),
-      failure: %w(rejected),
-      void:    %w(refunded cancelled charged_back)
-    }
+      complete: %w[approved],
+      failure: %w[rejected],
+      void:    %w[refunded cancelled charged_back]
+    }.freeze
 
     attr_reader :notification
 
@@ -37,14 +37,14 @@ module MercadoPago
       # Fix: Payment method is an instance of Spree::PaymentMethod::MercadoPago not THE class
       client = ::Spree::PaymentMethod::MercadoPago.first.provider
       raw_op_info = client.get_operation_info(notification.operation_id)
-      op_info = raw_op_info["collection"] unless raw_op_info.blank?
+      op_info = raw_op_info['collection'] if raw_op_info.present?
 
-      if op_info && payment = Spree::Payment.where(number: op_info["external_reference"]).first
-        if STATES[:complete].include?(op_info["status"])
+      if op_info && payment = Spree::Payment.where(number: op_info['external_reference']).first
+        if STATES[:complete].include?(op_info['status'])
           payment.complete
-        elsif STATES[:failure].include?(op_info["status"])
+        elsif STATES[:failure].include?(op_info['status'])
           payment.failure
-        elsif STATES[:void].include?(op_info["status"])
+        elsif STATES[:void].include?(op_info['status'])
           payment.void
         end
 

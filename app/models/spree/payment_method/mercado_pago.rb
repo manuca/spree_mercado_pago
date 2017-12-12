@@ -1,6 +1,5 @@
 module Spree
   class PaymentMethod::MercadoPago < PaymentMethod
-
     def payment_profiles_supported?
       false
     end
@@ -27,7 +26,7 @@ module Spree
     end
 
     def preferred_sandbox
-      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], "sandbox")
+      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], 'sandbox')
     end
 
     ## Admin options
@@ -37,11 +36,11 @@ module Spree
     end
 
     def actions
-      %w{void}
+      %w[void]
     end
 
-    def void(*args)
-      ActiveMerchant::Billing::Response.new(true, "", {}, {})
+    def void(*_args)
+      ActiveMerchant::Billing::Response.new(true, '', {}, {})
     end
   end
 end

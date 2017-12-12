@@ -6,13 +6,13 @@ module Spree
     def checkout
       current_order.state_name == :payment || raise(ActiveRecord::RecordNotFound)
       payment_method = PaymentMethod::MercadoPago.find(params[:payment_method_id])
-      payment = current_order.payments.
-        create!({amount: current_order.total, payment_method: payment_method})
+      payment = current_order.payments
+                             .create!(amount: current_order.total, payment_method: payment_method)
       payment.started_processing!
 
-      preferences = ::MercadoPago::OrderPreferencesBuilder.
-        new(current_order, payment, callback_urls).
-        preferences_hash
+      preferences = ::MercadoPago::OrderPreferencesBuilder
+                    .new(current_order, payment, callback_urls)
+                    .preferences_hash
 
       provider = payment_method.provider
       provider.create_preferences(preferences)
@@ -37,8 +37,8 @@ module Spree
     end
 
     def ipn
-      notification = MercadoPago::Notification.
-        new(operation_id: params[:id], topic: params[:topic])
+      notification = MercadoPago::Notification
+                     .new(operation_id: params[:id], topic: params[:topic])
 
       if notification.save
         MercadoPago::HandleReceivedNotification.new(notification).process!
@@ -53,8 +53,8 @@ module Spree
     private
 
     def payment
-      @payment ||= Spree::Payment.where(number: params[:external_reference]).
-        first
+      @payment ||= Spree::Payment.where(number: params[:external_reference])
+                                 .first
     end
 
     def callback_urls

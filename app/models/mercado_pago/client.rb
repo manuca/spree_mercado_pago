@@ -15,7 +15,7 @@ module MercadoPago
     attr_reader :auth_response
     attr_reader :preferences_response
 
-    def initialize(payment_method, options={})
+    def initialize(payment_method, options = {})
       @payment_method = payment_method
       @api_options    = options.clone
       @errors         = []
@@ -23,10 +23,9 @@ module MercadoPago
 
     def get_operation_info(operation_id)
       url = create_url(notifications_url(operation_id), access_token: access_token)
-      options = {content_type: 'application/x-www-form-urlencoded', accept: 'application/json'}
+      options = { content_type: 'application/x-www-form-urlencoded', accept: 'application/json' }
       get(url, options, quiet: true)
     end
-
 
     # def get_external_reference(operation_id)
     #   response = send_notification_request(operation_id)
@@ -36,10 +35,10 @@ module MercadoPago
     # end
 
     def get_payment_status(external_reference)
-      response = send_search_request({external_reference: external_reference, access_token: access_token})
+      response = send_search_request(external_reference: external_reference, access_token: access_token)
 
       if response['results'].empty?
-        "pending"
+        'pending'
       else
         response['results'][0]['collection']['status']
       end
@@ -54,9 +53,9 @@ module MercadoPago
       Rails.logger.info "result #{result}."
     end
 
-    def send_search_request(params, options={})
+    def send_search_request(params, _options = {})
       url = create_url(search_url, params)
-      options = {content_type: 'application/x-www-form-urlencoded', accept: 'application/json'}
+      options = { content_type: 'application/x-www-form-urlencoded', accept: 'application/json' }
       get(url, options)
     end
   end

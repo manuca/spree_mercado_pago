@@ -1,4 +1,4 @@
-if ENV["COVERAGE"]
+if ENV['COVERAGE']
   # Run Coverage report
   require 'simplecov'
   SimpleCov.start do
@@ -13,12 +13,12 @@ end
 
 # This file is copied to ~/spec when you run 'ruby script/generate rspec'
 # from the project root directory.
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 
 begin
-  require File.expand_path("../dummy/config/environment", __FILE__)
+  require File.expand_path('../dummy/config/environment', __FILE__)
 rescue LoadError
-  puts "Could not load dummy application. Please ensure you have run `bundle exec rake test_app`"
+  puts 'Could not load dummy application. Please ensure you have run `bundle exec rake test_app`'
   exit
 end
 
@@ -27,13 +27,11 @@ require 'ffaker'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 require 'database_cleaner'
 
-if ENV["CHECK_TRANSLATIONS"]
-  require "spree/testing_support/i18n"
-end
+require 'spree/testing_support/i18n' if ENV['CHECK_TRANSLATIONS']
 
 require 'spree/testing_support/authorization_helpers'
 require 'spree/testing_support/capybara_ext'
@@ -63,7 +61,7 @@ end
 RSpec.configure do |config|
   config.color = true
   config.fail_fast = ENV['FAIL_FAST'] || false
-  config.fixture_path = File.join(File.expand_path(File.dirname(__FILE__)), "fixtures")
+  config.fixture_path = File.join(__dir__, 'fixtures')
   config.infer_spec_type_from_file_location!
   config.mock_with :rspec
   config.raise_errors_for_deprecations!
@@ -86,13 +84,13 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.before(:each) do
+  config.before do
     WebMock.disable!
-    if RSpec.current_example.metadata[:js]
-      DatabaseCleaner.strategy = :truncation
-    else
-      DatabaseCleaner.strategy = :transaction
-    end
+    DatabaseCleaner.strategy = if RSpec.current_example.metadata[:js]
+                                 :truncation
+                               else
+                                 :transaction
+                               end
     # TODO: Find out why open_transactions ever gets below 0
     # See issue #3428
     if ApplicationRecord.connection.open_transactions < 0
@@ -102,7 +100,7 @@ RSpec.configure do |config|
     reset_spree_preferences
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 
@@ -113,7 +111,6 @@ RSpec.configure do |config|
       puts "In spec: #{example.location}"
     end
   end
-
 
   config.include FactoryGirl::Syntax::Methods
 
