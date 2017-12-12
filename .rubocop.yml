@@ -1,0 +1,19 @@
+inherit_from: ./.hound.yml
+
+Rails:
+  Enabled: true
+
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/factories/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - "spec/factories/*"
+    - 'config/routes.rb'
+    - 'config/initializers/*'
+
+Rails/HttpPositionalArguments:
+  Enabled: false
