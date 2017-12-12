@@ -1,10 +1,11 @@
-Spree Mercado Pago Payment Method
+Solidus Mercado Pago Payment Method. WORK IN PROGRESS
 =================================
 
-This project is compatible with spree 3.2.0 and Rails 5
+This project is a working progress. It is a fork from the [spree version maintained by manuca](https://github.com/manuca/spree_mercado_pago), which is compatible with spree 3.2.0 and Rails 5.
+
 
 ```
-gem 'spree_mercado_pago', '~> 3.2.0.rc2', git: "git@github.com:manuca/spree_mercado_pago.git"
+gem 'solidus_mercado_pago', git: "git@github.com:ngelx/solidus_mercado_pago.git"
 ```
 
 You should run inside your project
