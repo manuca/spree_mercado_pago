@@ -37,6 +37,9 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 require 'database_cleaner'
 
+# Requires factories and other useful helpers defined in spree_core.
+require 'solidus_support/extension/feature_helper'
+
 require 'spree/testing_support/i18n' if ENV['CHECK_TRANSLATIONS']
 
 require 'spree/testing_support/authorization_helpers'
@@ -48,8 +51,8 @@ require 'spree/testing_support/flash'
 require 'spree/testing_support/url_helpers'
 require 'spree/testing_support/order_walkthrough'
 require 'spree/testing_support/caching'
-require 'spree/testing_support/shoulda_matcher_configuration'
-require 'spree/testing_support/microdata'
+# require 'spree/testing_support/shoulda_matcher_configuration'
+# require 'spree/testing_support/microdata'
 
 require 'paperclip/matchers'
 
@@ -118,7 +121,7 @@ RSpec.configure do |config|
     end
   end
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.include Spree::TestingSupport::Preferences
   config.include Spree::TestingSupport::UrlHelpers

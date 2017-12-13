@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module MercadoPago
   describe ProcessNotification do
-    let(:order)   { FactoryGirl.create(:completed_order_with_pending_payment) }
+    let(:order)   { FactoryBot.create(:completed_order_with_pending_payment) }
     let(:payment) { order.payments.first }
 
     let(:operation_id) { 'op123' }
