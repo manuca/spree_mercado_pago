@@ -47,7 +47,7 @@ module Spree
         status = :bad_request
       end
 
-      render nothing: true, status: status
+      render json: :empty, status: status
     end
 
     private

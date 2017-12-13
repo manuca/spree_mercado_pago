@@ -11,7 +11,7 @@ RSpec.describe Spree::MercadoPagoController, type: :controller do
         allow(MercadoPago::HandleReceivedNotification).to receive(:new).and_return(use_case)
         expect(use_case).to receive(:process!)
 
-        spree_post :ipn, id: operation_id, topic: 'payment'
+        post :ipn, params: { id: operation_id, topic: 'payment' }
         expect(response).to be_success
 
         notification = MercadoPago::Notification.order(:created_at).last
@@ -22,7 +22,7 @@ RSpec.describe Spree::MercadoPagoController, type: :controller do
 
     context 'for invalid notification' do
       it 'responds with invalid request' do
-        spree_post :ipn, id: operation_id, topic: 'nonexistent_topic'
+        post :ipn, params: { id: operation_id, topic: 'nonexistent_topic' }
         expect(response).to be_bad_request
       end
     end
