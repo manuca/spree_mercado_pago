@@ -1,7 +1,7 @@
 module Spree
   class MercadoPagoController < StoreController
     protect_from_forgery except: :ipn
-    skip_before_action :set_current_order, only: :ipn
+    # skip_before_action :set_current_order, only: :ipn
 
     def checkout
       current_order.state_name == :payment || raise(ActiveRecord::RecordNotFound)
@@ -47,7 +47,7 @@ module Spree
         status = :bad_request
       end
 
-      render nothing: true, status: status
+      render json: :empty, status: status
     end
 
     private

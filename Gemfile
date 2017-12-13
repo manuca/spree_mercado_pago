@@ -1,6 +1,6 @@
-# By placing all of Spree's shared dependencies in this file and then loading
+# By placing all of Solidus's shared dependencies in this file and then loading
 # it for each component's Gemfile, we can be sure that we're only testing just
-# the one component of Spree.
+# the one component of Solidus.
 source 'https://rubygems.org'
 
 gem 'coffee-rails'
@@ -13,7 +13,7 @@ group :test do
   gem 'capybara-screenshot', '~> 1.0'
   gem 'database_cleaner', '~> 1.3'
   gem 'email_spec'
-  gem 'factory_girl_rails', '~> 4.7'
+  gem 'factory_bot_rails'
   gem 'launchy'
   gem 'mutant-rspec', '~> 0.8'
   gem 'poltergeist', '~> 1.10'
@@ -29,6 +29,7 @@ group :test do
   gem 'timecop'
   gem 'webmock', '~> 2.1'
   gem 'with_model'
+  gem 'ffaker'
 end
 
 group :test, :development do
@@ -36,6 +37,6 @@ group :test, :development do
   gem 'rubocop', require: false
 end
 
-gem 'spree', '~> 3.2.0.rc2'
+gem 'solidus', '~> 2.4'
 
 gemspec
