@@ -13,8 +13,8 @@ module SolidusMercadoPago
         backend_css_file = 'vendor/assets/stylesheets/spree/backend/all.css'
 
         if File.exist?(backend_css_file) && File.exist?(frontend_css_file)
-          inject_into_file frontend_css_file, " *= require spree/frontend/spree_mercado_pago\n", before: /\*\//, verbose: true
-          inject_into_file backend_css_file, " *= require spree/backend/spree_mercado_pago\n", before: /\*\//, verbose: true
+          inject_into_file frontend_css_file, " *= require spree/frontend/solidus_mercado_pago\n", before: /\*\//, verbose: true
+          inject_into_file backend_css_file, " *= require spree/backend/solidus_mercado_pago\n", before: /\*\//, verbose: true
         end
       end
 

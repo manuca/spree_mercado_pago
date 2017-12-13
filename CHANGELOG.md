@@ -10,3 +10,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Starting point. Clone https://github.com/manuca/spree_mercado_pago
 - Added Docker for dev.
 - Added Changelog
+- Make test pass for solidus
