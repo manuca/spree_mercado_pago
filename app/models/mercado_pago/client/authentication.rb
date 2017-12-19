@@ -21,11 +21,11 @@ class MercadoPago::Client
     end
 
     def client_id
-      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], 'client_id')
+      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], :client_id)
     end
 
     def client_secret
-      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], 'client_secret')
+      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], :client_secret)
     end
 
     def access_token

@@ -19,7 +19,7 @@ module SolidusMercadoPago
       end
 
       def add_migrations
-        run 'bundle exec rake railties:install:migrations FROM=spree_mercado_pago'
+        run 'bundle exec rake railties:install:migrations FROM=solidus_mercado_pago'
       end
 
       def run_migrations

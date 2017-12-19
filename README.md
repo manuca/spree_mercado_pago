@@ -1,8 +1,8 @@
 Solidus Mercado Pago Payment Method.
 =================================
 
-[![Build Status](https://travis-ci.org/ngelx/solidus_mercado_pago.svg?branch=master)](https://travis-ci.org/ngelx/solidus_mercado_pago)  [![Maintainability](https://api.codeclimate.com/v1/badges/de5046097b27a3056979/maintainability)](https://codeclimate.com/github/ngelx/solidus_mercado_pago/maintainability)    [![Test Coverage](https://api.codeclimate.com/v1/badges/de5046097b27a3056979/test_coverage)](https://codeclimate.com/github/ngelx/solidus_mercado_pago/test_coverage) 
-[![Dependency Status](https://beta.gemnasium.com/badges/github.com/ngelx/solidus_mercado_pago.svg)](https://beta.gemnasium.com/projects/github.com/ngelx/solidus_mercado_pago) 
+[![Build Status](https://travis-ci.org/ngelx/solidus_mercado_pago.svg?branch=master)](https://travis-ci.org/ngelx/solidus_mercado_pago)  [![Maintainability](https://api.codeclimate.com/v1/badges/de5046097b27a3056979/maintainability)](https://codeclimate.com/github/ngelx/solidus_mercado_pago/maintainability)    [![Test Coverage](https://api.codeclimate.com/v1/badges/de5046097b27a3056979/test_coverage)](https://codeclimate.com/github/ngelx/solidus_mercado_pago/test_coverage)
+[![Dependency Status](https://beta.gemnasium.com/badges/github.com/ngelx/solidus_mercado_pago.svg)](https://beta.gemnasium.com/projects/github.com/ngelx/solidus_mercado_pago)
 
 This project is a fork from the [spree version maintained by manuca](https://github.com/manuca/spree_mercado_pago), which is compatible with spree 3.2.0 and Rails 5.
 

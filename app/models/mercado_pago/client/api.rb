@@ -30,12 +30,13 @@ class MercadoPago::Client
     end
 
     def sandbox
-      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], 'sandbox')
+      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], :sandbox)
     end
 
     def get(url, request_options = {}, options = {})
       response = RestClient.get(url, request_options)
       JSON.parse(response)
+    # TODO: add class to rescue
     rescue => e
       raise e unless options[:quiet]
     end

@@ -14,6 +14,7 @@ group :test do
   gem 'database_cleaner', '~> 1.3'
   gem 'email_spec'
   gem 'factory_bot_rails'
+  gem 'ffaker'
   gem 'launchy'
   gem 'mutant-rspec', '~> 0.8'
   gem 'poltergeist', '~> 1.10'
@@ -29,7 +30,6 @@ group :test do
   gem 'timecop'
   gem 'webmock', '~> 2.1'
   gem 'with_model'
-  gem 'ffaker'
 end
 
 group :test, :development do

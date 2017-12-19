@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.description = 'Integrates Mercado Pago with Solidus'
   s.author      = 'Ngelx'
   s.files       = `git ls-files -- {app,config,lib,test,spec,features}/*`.split('\n')
-  s.homepage    = 'https://github.com/manuca/spree_mercado_pago'
+  s.homepage    = 'https://github.com/angelx/solidus_mercado_pago'
   s.email       = 'ngel@protonmail.com'
   s.license     = 'MIT'
 

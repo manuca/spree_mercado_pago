@@ -26,7 +26,7 @@ module Spree
     end
 
     def preferred_sandbox
-      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], 'sandbox')
+      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], :sandbox)
     end
 
     ## Admin options
