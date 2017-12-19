@@ -6,10 +6,10 @@ require 'spree/testing_support/extension_rake'
 
 RSpec::Core::RakeTask.new
 
-task :default => [:spec]
+task default: [:spec]
 
 desc 'Generates a dummy app for testing'
 task :test_app do
-  ENV['LIB_NAME'] = 'spree_mercado_pago'
+  ENV['LIB_NAME'] = 'solidus_mercado_pago'
   Rake::Task['common:test_app'].invoke
 end

@@ -1,16 +1,20 @@
-Spree Mercado Pago Payment Method
+Solidus Mercado Pago Payment Method.
 =================================
 
-This project is compatible with spree 3.2.0 and Rails 5
+[![Build Status](https://travis-ci.org/ngelx/solidus_mercado_pago.svg?branch=master)](https://travis-ci.org/ngelx/solidus_mercado_pago)  [![Maintainability](https://api.codeclimate.com/v1/badges/de5046097b27a3056979/maintainability)](https://codeclimate.com/github/ngelx/solidus_mercado_pago/maintainability)    [![Test Coverage](https://api.codeclimate.com/v1/badges/de5046097b27a3056979/test_coverage)](https://codeclimate.com/github/ngelx/solidus_mercado_pago/test_coverage)
+[![Dependency Status](https://beta.gemnasium.com/badges/github.com/ngelx/solidus_mercado_pago.svg)](https://beta.gemnasium.com/projects/github.com/ngelx/solidus_mercado_pago)
+
+This project is a fork from the [spree version maintained by manuca](https://github.com/manuca/spree_mercado_pago), which is compatible with spree 3.2.0 and Rails 5.
+
 
 ```
-gem 'spree_mercado_pago', '~> 3.2.0.rc2', git: "git@github.com:manuca/spree_mercado_pago.git"
+gem 'solidus_mercado_pago', git: "git@github.com:ngelx/solidus_mercado_pago.git"
 ```
 
 You should run inside your project
 
 ```
-bundle exec rails g spree_mercado_pago:install
+bundle exec rails g solidus_mercado_pago:install
 ```
 
 This will import assets and migrations
@@ -31,6 +35,8 @@ Testing
 -------
 
 - Clone this repo
-- Execute `bundle`
-- Execute `rake test_app` to build a dummy app directory inside specs
-- Execute `bundle exec rspec spec`
+- `ln -s docker-compose-{platform}.yml docker-compose.yml`
+- `docker-sync start` **Only in mac**
+- `docker-compose up`
+- `docker-compose run web bundle exec rake test_app` to build a dummy app directory inside specs
+- `docker-compose run web bundle exec rspec spec`

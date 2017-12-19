@@ -19,7 +19,7 @@ class MercadoPago::Client
       "https://api.mercadolibre.com/#{sandbox_part}collections/search"
     end
 
-    def create_url(url, params={})
+    def create_url(url, params = {})
       uri = URI(url)
       uri.query = URI.encode_www_form(params)
       uri.to_s
@@ -30,12 +30,13 @@ class MercadoPago::Client
     end
 
     def sandbox
-      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], "sandbox")
+      Rails.application.try(:secrets).try(:[], :mercadopago).try(:[], :sandbox)
     end
 
-    def get(url, request_options={}, options={})
+    def get(url, request_options = {}, options = {})
       response = RestClient.get(url, request_options)
       JSON.parse(response)
+    # TODO: add class to rescue
     rescue => e
       raise e unless options[:quiet]
     end

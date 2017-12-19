@@ -35,9 +35,9 @@ module MercadoPago
     def generate_items_from_shipments
       @order.shipments.collect do |shipment|
         {
-          :title => shipment.shipping_method.name,
-          :unit_price => shipment.cost.to_f + shipment.adjustment_total.to_f,
-          :quantity => 1
+          title: shipment.shipping_method.name,
+          unit_price: shipment.cost.to_f + shipment.adjustment_total.to_f,
+          quantity: 1
         }
       end
     end
@@ -45,9 +45,9 @@ module MercadoPago
     def generate_items_from_line_items
       @order.line_items.collect do |line_item|
         {
-          :title => line_item_description_text(line_item.variant.product.name),
-          :unit_price => line_item.price.to_f,
-          :quantity => line_item.quantity
+          title: line_item_description_text(line_item.variant.product.name),
+          unit_price: line_item.price.to_f,
+          quantity: line_item.quantity
         }
       end
     end
